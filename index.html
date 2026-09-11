@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="uz">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Talaba ma’lumotnomasini to‘ldiring va tayyor Word faylni yuklab oling." />
+    <title>Ma’lumotnoma to‘ldirish</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true">M</span>
+        <div>
+          <h1>Ma’lumotnoma</h1>
+          <p>Talaba ma’lumotlarini kiriting</p>
+        </div>
+      </div>
+      <button class="download-button desktop-download" id="downloadTop" type="button">
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14"/></svg>
+        Word yuklab olish
+      </button>
+    </header>
+
+    <main class="workspace">
+      <section class="editor-panel" aria-label="Ma’lumotlarni tahrirlash">
+        <div class="panel-heading">
+          <div>
+            <span class="eyebrow">1-qadam</span>
+            <h2>Ma’lumotlarni kiriting</h2>
+          </div>
+          <span class="privacy-note">Ma’lumotlar brauzerda qoladi</span>
+        </div>
+
+        <form id="studentForm" autocomplete="on">
+          <details open>
+            <summary><span class="section-number">01</span> Talaba va o‘qish ma’lumotlari</summary>
+            <div class="fields two-column">
+              <label class="wide">F.I.Sh.<input data-path="fullName" autocomplete="name" /></label>
+              <label>O‘qishni boshlagan sana<input data-path="fromDate" /></label>
+              <label>Universitet<input data-path="university" /></label>
+              <label>Fakultet<input data-path="faculty" /></label>
+              <label>Yo‘nalish<input data-path="major" /></label>
+              <label>Guruh<input data-path="group" /></label>
+              <label>Tug‘ilgan sana<input data-path="birthDate" /></label>
+              <label>Millati<input data-path="nationality" /></label>
+              <label class="wide">Tug‘ilgan joyi<textarea data-path="birthPlace" rows="2"></textarea></label>
+              <label>Ma’lumoti<input data-path="educationLevel" /></label>
+              <label>Mutaxassisligi<input data-path="specialty" /></label>
+              <label class="wide">Tugatgan ta’lim muassasasi, yili va hujjat raqami<textarea data-path="graduatedInstitution" rows="3"></textarea></label>
+              <label>Oilaviy ahvoli<input data-path="maritalStatus" /></label>
+              <label>Partiyaviyligi<input data-path="party" /></label>
+              <label>Chet tillari<input data-path="languages" /></label>
+              <label>Kirish bali<input data-path="admissionScore" inputmode="decimal" /></label>
+              <label>Ta’lim shakli<input data-path="studyType" /></label>
+              <label>Darsdan bo‘sh vaqtdagi mashg‘uloti<input data-path="freeTime" /></label>
+              <label>Qiziqishlari<input data-path="interests" /></label>
+              <label class="wide">Guruh tyutori va telefon raqami<input data-path="tutor" /></label>
+            </div>
+          </details>
+
+          <details>
+            <summary><span class="section-number">02</span> Aloqa va hujjatlar</summary>
+            <div class="fields two-column">
+              <label class="wide">Asosiy yashash manzili<textarea data-path="mainAddress" rows="3"></textarea></label>
+              <label class="wide">Yashash joyi geolokatsiyasi<input data-path="homeGeo" inputmode="url" /></label>
+              <label>Telefon raqami<input data-path="phone" autocomplete="tel" /></label>
+              <label>Email<input data-path="email" autocomplete="email" /></label>
+              <label>JSHIR<input data-path="jshir" inputmode="numeric" maxlength="14" /></label>
+              <label class="wide">Pasport seriyasi, raqami va berilgan joyi<textarea data-path="passport" rows="3"></textarea></label>
+            </div>
+          </details>
+
+          <details>
+            <summary><span class="section-number">03</span> Mehnat faoliyati</summary>
+            <div class="repeat-list" id="workFields"></div>
+          </details>
+
+          <details>
+            <summary><span class="section-number">04</span> Yaqin qarindoshlar</summary>
+            <div class="repeat-list" id="relativeFields"></div>
+          </details>
+
+          <details>
+            <summary><span class="section-number">05</span> Vaqtincha yashash va qo‘shimcha ma’lumotlar</summary>
+            <div class="fields two-column">
+              <label class="wide">Vaqtincha yashash joyi<textarea data-path="tempResidence" rows="2"></textarea></label>
+              <label class="wide">Vaqtincha yashash manzili<textarea data-path="tempAddress" rows="2"></textarea></label>
+              <label class="wide">Ijara geolokatsiyasi<input data-path="rentalGeo" inputmode="url" /></label>
+              <label>Birga turuvchi 1<input data-path="roommate1" /></label>
+              <label>Birga turuvchi 2<input data-path="roommate2" /></label>
+              <label class="wide">Qo‘shimcha ma’lumot 1<textarea data-path="extra1" rows="2"></textarea></label>
+              <label class="wide">Qo‘shimcha ma’lumot 2<textarea data-path="extra2" rows="2"></textarea></label>
+            </div>
+          </details>
+        </form>
+      </section>
+
+      <aside class="preview-panel" aria-label="Hujjat ko‘rinishi">
+        <div class="preview-heading">
+          <div>
+            <span class="eyebrow">2-qadam</span>
+            <h2>Hujjat ko‘rinishi</h2>
+          </div>
+          <span class="file-chip">DOCX · 2 sahifa</span>
+        </div>
+        <div class="paper-stack">
+          <article class="paper" id="documentPreview" aria-live="polite"></article>
+        </div>
+      </aside>
+    </main>
+
+    <div class="mobile-actions">
+      <button class="download-button" id="downloadBottom" type="button">
+        <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14"/></svg>
+        Word yuklab olish
+      </button>
+    </div>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="./app.js"></script>
+  </body>
+</html>
